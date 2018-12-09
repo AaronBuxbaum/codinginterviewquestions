@@ -14,7 +14,7 @@ export const isUnique = (string) => {
     }
 
     return true;
-}
+};
 
 // Analysis: O(N) time and O(N) space where N is the number of characters in the string
 
@@ -30,6 +30,6 @@ export const isUniqueWithoutStructures = (string) => {
         }
     }
     return true;
-}
+};
 
 // Analysis: O(N^2) time and O(1) space where N is the number of characters in the string

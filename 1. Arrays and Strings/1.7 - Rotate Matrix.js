@@ -5,7 +5,7 @@
 
 
 // assumption: 90 degrees is counterclockwise
-const rotateMatrix = (matrix) => {
+export const rotateMatrix = (matrix) => {
     const newMatrix = [new Array(matrix.length), new Array(matrix.length), new Array(matrix.length)];
 
     for (let i = 0; i < matrix.length; i++) {
@@ -16,10 +16,5 @@ const rotateMatrix = (matrix) => {
         }
     }
 
-    console.log(newMatrix);
     return newMatrix;
-}
-
-const original = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
-const rotated = [[7, 4, 1], [8, 5, 2], [9, 6, 3]];
-console.log(rotateMatrix(original) === rotated);
+};

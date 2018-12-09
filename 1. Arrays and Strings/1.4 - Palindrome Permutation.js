@@ -6,9 +6,9 @@ const buildCharMap = (string) => {
         words[char]++;
     }
     return words;
-}
+};
 
-const palindromePermutation = (string) => {
+export const palindromePermutation = (string) => {
     const words = buildCharMap(string);
     const counts = Object.values(words);
     const oddCounts = counts.filter((count) => count % 2 === 0);
@@ -16,7 +16,3 @@ const palindromePermutation = (string) => {
 };
 
 // Analysis: O(N) time and O(N) space, where N is the number of characters in the larger string
-
-console.log(palindromePermutation('tact coa') === true);
-console.log(palindromePermutation('tact ccoa') === true);
-console.log(palindromePermutation('tactccoaa') === false);

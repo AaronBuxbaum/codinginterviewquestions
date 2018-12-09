@@ -12,7 +12,7 @@ const buildCharMap = (string) => {
     return words;
 }
 
-const checkPermutation = (str1, str2) => {
+export const checkPermutation = (str1, str2) => {
     if (!str1.length && !str2.length) {
         return true;
     }
@@ -73,12 +73,3 @@ const checkPermutationWoops = (str1, str2) => {
 };
 
 // Analysis: O(N) + O(N) = O(N) time, O(N) space, where N is the number of characters in the larger string of the two
-
-
-
-
-console.log(checkPermutation('aaaa', 'aaaa') === true);
-console.log(checkPermutation('abba', 'baba') === true);
-console.log(checkPermutation('aaaa', 'aba') === false);
-console.log(checkPermutation('aaaa', 'aab') === false);
-console.log(checkPermutation('aaaa', '') === false);
