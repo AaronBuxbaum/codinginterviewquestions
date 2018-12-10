@@ -10,7 +10,7 @@ const buildCharMap = (string) => {
         words[char]++;
     }
     return words;
-}
+};
 
 export const checkPermutation = (str1, str2) => {
     if (!str1.length && !str2.length) {
@@ -28,7 +28,7 @@ export const checkPermutation = (str1, str2) => {
     }
 
     return !Object.values(subsetCharMap).some((value) => value > 0);
-}
+};
 
 /*
     Analysis:

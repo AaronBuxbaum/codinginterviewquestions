@@ -6,7 +6,10 @@
 */
 
 // is this relevant in JS?
+// TODO: this solution clearly defeats the purpose of the question
 
 export const urlify = (string, len) => {
-    return string.split(' ').join('%20');
+    return string.trim().split(' ').join('%20');
 };
+
+// TODO: analysis
