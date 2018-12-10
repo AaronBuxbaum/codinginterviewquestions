@@ -56,4 +56,18 @@ const getAction = (str1, str2) => {
     return deleteAction;
 };
 
-// TODO: analysis
+
+/*
+    Analysis:
+
+    We know which function to use based on the length of the strings when we start out.
+    It's arguable if we should combine the "action" functions, but I found that ugly to read.
+
+    This algorithm uses O(N) space to hold the temporary value in memory.
+    Since we iterate over each element, we use O(N) time.
+
+    For both metrics, N represents the length of the _shorter_ string + 1.
+    This is because if the strings are more than 1 element away, we complete in O(1) time, therefore we have O(N).
+
+    TODO: we can also solve this with O(1) space by having the action functions only change pointers around.
+ */

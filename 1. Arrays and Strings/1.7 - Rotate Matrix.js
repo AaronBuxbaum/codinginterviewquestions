@@ -22,7 +22,6 @@ export const rotateMatrix = (matrix) => {
 /*
     We need to store a full matrix, so space is O(N^2), where N is the number of rows (because num rows === num columns)
     Since we also need to iterate over each element, time is O(N^2) as well.
-
  */
 
 
