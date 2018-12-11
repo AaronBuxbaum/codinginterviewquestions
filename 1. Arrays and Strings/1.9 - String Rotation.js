@@ -30,8 +30,8 @@ export const isRotation = (string1, string2) => {
     Because of this, the complexity is effectively the same as isSubstring
     isSubstring can be calculated with Ukkonen's algorithm in O(A + B),
     where A and B are the length of each string
-    Therefore, we have time complexity O(N) and space O(1)
-    where N is max length of A or B
+    Therefore, we have time complexity O(2N) = O(N) and space O(1)
+    where N is length of max(A, B)
 
     Reference:
     Ukkonen's algorithm: https://en.wikipedia.org/wiki/Ukkonen%27s_algorithm

@@ -3,31 +3,33 @@
     Can you do this in place?
 */
 
-// assumption: 90 degrees is counterclockwise
+// assumption: 90 degrees is clockwise
+// We're effectively just going to swap each side with each other, from the outside in
+// This just gets a little more complicated because we have to make sure that we don't double-swap
+// ie. if we iterate through the entire matrix, we'll flip the matrix 180 degrees instead of 90
+
 
 export const rotateMatrix = (matrix) => {
-    const newMatrix = [new Array(matrix.length), new Array(matrix.length), new Array(matrix.length)];
+    for(let x = 0; x < matrix.length / 2; x++) {
+        for (let y = x; y < matrix.length - x - 1; y++) {
+            const temp = matrix[x][y];
 
-    for (let i = 0; i < matrix.length; i++) {
-        const columnIndex = matrix.length - i - 1;
+            // right -> top
+            matrix[x][y] = matrix[y][matrix.length - 1 - x];
 
-        for (let j = 0; j < matrix.length; j++) {
-            newMatrix[j][columnIndex] = matrix[i][j];
+            // bottom -> right
+            matrix[y][matrix.length - 1 - x] = matrix[matrix.length - 1 - x][matrix.length - 1 - y];
+
+            // left -> bottom
+            matrix[matrix.length - 1 - x][matrix.length - 1 - y] = matrix[matrix.length - 1 - y][x];
+
+            // temp -> left
+            matrix[matrix.length - 1 - y][x] = temp;
         }
     }
-
-    return newMatrix;
 };
 
 /*
-    We need to store a full matrix, so space is O(N^2), where N is the number of rows (because num rows === num columns)
-    Since we also need to iterate over each element, time is O(N^2) as well.
+    Since we don't store anything, we have space O(1).
+    Since we also need to iterate over each element, time is O(N^2), where N is the number of rows or columns (since #rows === #columns)
  */
-
-
-// TODO: in place solution
-export const rotateMatrixInPlace = (matrix) => {
-
-};
-
-// TODO: analysis
