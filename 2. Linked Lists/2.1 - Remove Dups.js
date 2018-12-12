@@ -25,11 +25,32 @@ export const removeDups = (list) => {
     }
 };
 
-// TODO: analysis
+// we have to iterate over each element, and we store 2 references (the head and the previous).
+// Therefore, we have O(N) time, where N is the number of elements in the list, and O(1) space.
+
 
 
 export const removeDupsNoBuffer = (list) => {
+    if (!list || !list.head) {
+        return list;
+    }
 
+    let curr = list.head;
+    while(curr) {
+        let prev = curr;
+        let head = curr.next;
+
+        while(head) {
+            if (head.value === curr.value) {
+                prev.next = head.next;
+            } else {
+                prev = head;
+            }
+            head = head.next;
+        }
+
+        curr = curr.next;
+    }
 };
 
-// TODO: analysis
+// for each element, we have to iterate over each element. Therefore, we have O(N^2) time and O(1) space.
