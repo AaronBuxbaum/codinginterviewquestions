@@ -7,9 +7,9 @@
     Result: nothing is returned, but the new linked list looks like a -> b -> d -> e -> f
  */
 
-const list = new LinkedList();
+// TODO: i misread this -- we do NOT have access to the head node
 
-const deleteNode = (value) => {
+export const deleteMiddleNode = (list, value) => {
     let head = list.head;
     while (head.next) {
         if (head.next.value === value) {
@@ -18,4 +18,6 @@ const deleteNode = (value) => {
         }
         head = head.next;
     }
-}
+};
+
+// O(N) time to iterate through each element, O(1) time since we just store the head pointer

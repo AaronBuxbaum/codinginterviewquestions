@@ -7,3 +7,28 @@
     Input: 3 -> 5 -> 8 -> 5 -> 10 -> 2 -> 1 [partition=5]
     Output: 3 -> 1 -> 2 -> 10 -> 5 -> 5 -> 8
  */
+
+// We could create two new lists and then merge them together, or we could just swap components around.
+// The former takes O(N) space; the latter takes an additional O(N) time.
+
+export const partition = (list, partition) => {
+    let partitionNode = list.head;
+    while (partitionNode && partitionNode.next) {
+        partitionNode = partitionNode.next;
+    }
+    let tail = partitionNode;
+
+    let head = list.head;
+    let prev;
+    while (head && head.next && head !== partitionNode) {
+        if (head.value >= partition) {
+            tail.next = head;
+            prev.next = head.next;
+            tail = tail.next;
+        }
+        prev = head;
+        head = head.next;
+    }
+
+    return list.head;
+};

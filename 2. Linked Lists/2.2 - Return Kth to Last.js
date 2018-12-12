@@ -33,6 +33,9 @@ export const kthToLast = (list, k) => {
 
 // O(N) time (iterate through the entire list), and O(1) space
 
+
+
+// Recusive solution. I'm not super happy with this.
 export const kthToLastRecursive = (node, k) => {
     let returnValue;
     if(node.next) {
@@ -57,3 +60,5 @@ export const kthToLastRecursive = (node, k) => {
         iteratedN: iteratedN + 1,
     };
 };
+
+// O(N) time (iterate through the entire list), and O(N) space for recursive stack
