@@ -15,3 +15,34 @@
     Input: (6 -> 1 -> 7) + (2 -> 9 -> 5). That is, 617 + 295.
     Output: 9 -> 1 -> 2. That is, 912.
  */
+
+
+import {LinkedList, Node} from "./LinkedList";
+
+
+export const sumLists = (list1, list2) => {
+    const resultList = new LinkedList();
+    resultList.head = new Node();
+    let head = resultList.head;
+
+    let list1Head = list1.head;
+    let list2Head = list2.head;
+    let remainder = 0;
+
+    while (list1Head || list2Head || remainder) {
+        const value = (list1Head.value || 0) + (list2Head.value || 0) + remainder;
+        head.value = value % 10;
+        remainder = Math.floor(value / 10);
+
+        // ugh, gross.
+        if(!list1Head.next && !list2Head.next && !remainder) {
+            break;
+        }
+
+        head.next = new Node();
+        head = head.next;
+        list1Head = list1Head.next;
+        list2Head = list2Head.next;
+    }
+    return resultList;
+};
