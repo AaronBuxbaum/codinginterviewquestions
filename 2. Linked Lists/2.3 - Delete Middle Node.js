@@ -7,9 +7,8 @@
     Result: nothing is returned, but the new linked list looks like a -> b -> d -> e -> f
  */
 
-// TODO: i misread this -- we do NOT have access to the head node
-
-export const deleteMiddleNode = (list, value) => {
+// i misread this -- we do NOT have access to the head node
+const deleteMiddleNodeWRONG = (list, value) => {
     let head = list.head;
     while (head.next) {
         if (head.next.value === value) {
@@ -21,3 +20,13 @@ export const deleteMiddleNode = (list, value) => {
 };
 
 // O(N) time to iterate through each element, O(1) time since we just store the head pointer
+
+
+
+export const deleteMiddleNode = (node) => {
+    node.value = node.next.value;
+    node.next = node.next.next;
+};
+
+// All we're doing is replacing the current node value with the next node's value, and then deleting the next node
+// O(1) time and O(1) space

@@ -17,7 +17,8 @@
  */
 
 
-import {LinkedList, Node} from "./LinkedList";
+import { get } from 'lodash';
+import { LinkedList, Node } from "./LinkedList";
 
 
 export const sumLists = (list1, list2) => {
@@ -30,7 +31,7 @@ export const sumLists = (list1, list2) => {
     let remainder = 0;
 
     while (list1Head || list2Head || remainder) {
-        const value = (list1Head.value || 0) + (list2Head.value || 0) + remainder;
+        const value = get(list1Head, 'value', 0) + get(list2Head, 'value', 0) + remainder;
         head.value = value % 10;
         remainder = Math.floor(value / 10);
 
@@ -41,8 +42,13 @@ export const sumLists = (list1, list2) => {
 
         head.next = new Node();
         head = head.next;
-        list1Head = list1Head.next;
-        list2Head = list2Head.next;
+        list1Head = list1Head.next ? list1Head.next : {};
+        list2Head = list2Head.next ? list2Head.next : {};
     }
     return resultList;
+};
+
+// TODO: follow up
+export const sumListsForwardOrder = (list1, list2) => {
+
 };

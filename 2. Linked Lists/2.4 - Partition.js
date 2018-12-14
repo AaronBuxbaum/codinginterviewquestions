@@ -9,26 +9,35 @@
  */
 
 // We could create two new lists and then merge them together, or we could just swap components around.
-// The former takes O(N) space; the latter takes an additional O(N) time.
+// I went for the latter approach -- we effectively create a new "list" at the front of the list and move elements into it
+// Via a "head" and "tail" (since we don't care about stability -- if we do care about stability, we need to use new lists)
+
+import { LinkedList } from "./LinkedList";
 
 export const partition = (list, partition) => {
-    let partitionNode = list.head;
-    while (partitionNode && partitionNode.next) {
-        partitionNode = partitionNode.next;
-    }
-    let tail = partitionNode;
-
     let head = list.head;
-    let prev;
-    while (head && head.next && head !== partitionNode) {
-        if (head.value >= partition) {
-            tail.next = head;
-            prev.next = head.next;
-            tail = tail.next;
+    let tail = head;
+
+    let pointer = list.head;
+    while(pointer) {
+        let next = pointer.next;
+
+        if(pointer.value < partition) {
+            pointer.next = head;
+            head = pointer;
+        } else {
+            tail.next = pointer;
+            tail = pointer;
         }
-        prev = head;
-        head = head.next;
+
+        pointer = next;
     }
 
-    return list.head;
+    delete tail.next;
+    const returnList = new LinkedList();
+    returnList.head = head;
+    return returnList;
 };
+
+// Analysis: O(N) time to iterate through each of the elements
+// O(1) space since we don't actually add any elements, we just move around the pointers

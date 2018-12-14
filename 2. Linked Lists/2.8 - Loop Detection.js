@@ -8,3 +8,7 @@
     Input: A -> B -> C -> D -> E -> C [the same C as earlier]
     Output: C
 */
+
+export const findBeginningOfLoop = (list) => {
+
+};
