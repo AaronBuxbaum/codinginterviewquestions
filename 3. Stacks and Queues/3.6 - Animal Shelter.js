@@ -7,3 +7,60 @@
     Create the data structures to maintain this system and implement operations such as enqueue, dequeueAny, dequeueDog, and dequeueCat.
     You may use the built-in LinkedList data structure.
  */
+
+import { Queue } from './Queue';
+
+class Animal {
+    constructor({ timestamp, type }) {
+        this.timestamp = timestamp;
+        this.type = type;
+    }
+
+    isOlderThan(animal) {
+        return this.timestamp < animal.timestamp;
+    }
+}
+
+export class AnimalShelter {
+    constructor() {
+        this.dogs = new Queue();
+        this.cats = new Queue();
+    }
+
+    enqueue(type) {
+        const animalType = type === 'cat' ? this.cats : this.dogs;
+        const animal = new Animal({
+            timestamp: Date.now(),
+            type,
+        });
+        animalType.enqueue(animal);
+    }
+
+    dequeueAny() {
+        if(this.cats.isEmpty()) {
+            return this.dogs.dequeue();
+        }
+
+        if(this.dogs.isEmpty()) {
+            return this.cats.dequeue();
+        }
+
+        const oldestCat = this.cats.peek();
+        const oldestDog = this.dogs.peek();
+
+        const animalType = oldestCat.isOlderThan(oldestDog) ? this.cats : this.dogs;
+        return animalType.dequeue();
+    }
+
+    dequeueDog() {
+        return this.dogs.dequeue();
+    }
+
+    dequeueCat() {
+        return this.cats.dequeue();
+    }
+}
+
+/*
+    This takes O(1) time to queue and dequeue and adds O(1) space!
+ */
