@@ -6,29 +6,29 @@
 import { Stack } from "./Stack";
 
 export class StackMin {
-    constructor() {
-        this.stack = new Stack();
-        this.minValues = new Stack();
-    }
+  constructor() {
+    this.stack = new Stack();
+    this.minValues = new Stack();
+  }
 
-    push(value) {
-        if(this.minValues.isEmpty() || (value <= this.min())) {
-            this.minValues.push(value);
-        }
-        this.stack.push(value);
+  push(value) {
+    if (this.minValues.isEmpty() || value <= this.min()) {
+      this.minValues.push(value);
     }
+    this.stack.push(value);
+  }
 
-    min() {
-        return this.minValues.peek();
-    }
+  min() {
+    return this.minValues.peek();
+  }
 
-    pop() {
-        const returnValue = this.stack.pop();
-        if(returnValue === this.min()) {
-            this.minValues.pop();
-        }
-        return returnValue;
+  pop() {
+    const returnValue = this.stack.pop();
+    if (returnValue === this.min()) {
+      this.minValues.pop();
     }
+    return returnValue;
+  }
 }
 
 // This solution creates a data structure which is made from two stacks which update in parallel.

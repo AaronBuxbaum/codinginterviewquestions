@@ -17,50 +17,50 @@
     stack until we see a free one.
  */
 
-import { last } from 'lodash';
-import { Stack } from './Stack';
+import { last } from "lodash";
+import { Stack } from "./Stack";
 
 export class SetOfStacks {
-    constructor(limit = 3) {
-        this.limit = limit;
-        this.stacks = [new Stack()];
-        this.currStack = this.stacks[0];
+  constructor(limit = 3) {
+    this.limit = limit;
+    this.stacks = [new Stack()];
+    this.currStack = this.stacks[0];
+  }
+
+  push(value) {
+    if (this.currStack.length() >= this.limit) {
+      this.stacks.push(new Stack());
+      this.currStack = last(this.stacks);
+    }
+    this.currStack.push(value);
+  }
+
+  pop() {
+    const returnValue = this.currStack.pop();
+    if (this.currStack.isEmpty()) {
+      this.stacks.pop();
+      this.currStack = last(this.stacks);
+    }
+    return returnValue;
+  }
+
+  // follow-up
+  // if it's okay to leave empty spots, this is easy -- if not, we have to shift everything over...
+  popAt(index) {
+    const stack = this.stacks[index];
+    if (stack === last(this.stacks)) {
+      return this.pop();
     }
 
-    push(value) {
-        if (this.currStack.length() >= this.limit) {
-            this.stacks.push(new Stack());
-            this.currStack = last(this.stacks);
-        }
-        this.currStack.push(value);
+    const returnValue = stack.pop();
+    for (let i = index + 1; i < this.stacks.length; i++) {
+      // this is kinda cheating, but i can make a real solution if needed
+      let value = this.stacks[i].stack.shift();
+
+      this.stacks[i - 1].push(value);
     }
-
-    pop() {
-        const returnValue = this.currStack.pop();
-        if (this.currStack.isEmpty()) {
-            this.stacks.pop();
-            this.currStack = last(this.stacks);
-        }
-        return returnValue;
-    }
-
-    // follow-up
-    // if it's okay to leave empty spots, this is easy -- if not, we have to shift everything over...
-    popAt(index) {
-        const stack = this.stacks[index];
-        if (stack === last(this.stacks)) {
-            return this.pop();
-        }
-
-        const returnValue = stack.pop();
-        for(let i=index + 1; i<this.stacks.length; i++) {
-            // this is kinda cheating, but i can make a real solution if needed
-            let value = this.stacks[i].stack.shift();
-
-            this.stacks[i - 1].push(value);
-        }
-        return returnValue;
-    }
+    return returnValue;
+  }
 }
 
 /*

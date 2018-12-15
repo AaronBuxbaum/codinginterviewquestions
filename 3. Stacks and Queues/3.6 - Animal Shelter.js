@@ -8,57 +8,57 @@
     You may use the built-in LinkedList data structure.
  */
 
-import { Queue } from './Queue';
+import { Queue } from "./Queue";
 
 class Animal {
-    constructor({ timestamp, type }) {
-        this.timestamp = timestamp;
-        this.type = type;
-    }
+  constructor({ timestamp, type }) {
+    this.timestamp = timestamp;
+    this.type = type;
+  }
 
-    isOlderThan(animal) {
-        return this.timestamp < animal.timestamp;
-    }
+  isOlderThan(animal) {
+    return this.timestamp < animal.timestamp;
+  }
 }
 
 export class AnimalShelter {
-    constructor() {
-        this.dogs = new Queue();
-        this.cats = new Queue();
+  constructor() {
+    this.dogs = new Queue();
+    this.cats = new Queue();
+  }
+
+  enqueue(type) {
+    const animalType = type === "cat" ? this.cats : this.dogs;
+    const animal = new Animal({
+      timestamp: Date.now(),
+      type
+    });
+    animalType.enqueue(animal);
+  }
+
+  dequeueAny() {
+    if (this.cats.isEmpty()) {
+      return this.dogs.dequeue();
     }
 
-    enqueue(type) {
-        const animalType = type === 'cat' ? this.cats : this.dogs;
-        const animal = new Animal({
-            timestamp: Date.now(),
-            type,
-        });
-        animalType.enqueue(animal);
+    if (this.dogs.isEmpty()) {
+      return this.cats.dequeue();
     }
 
-    dequeueAny() {
-        if(this.cats.isEmpty()) {
-            return this.dogs.dequeue();
-        }
+    const oldestCat = this.cats.peek();
+    const oldestDog = this.dogs.peek();
 
-        if(this.dogs.isEmpty()) {
-            return this.cats.dequeue();
-        }
+    const animalType = oldestCat.isOlderThan(oldestDog) ? this.cats : this.dogs;
+    return animalType.dequeue();
+  }
 
-        const oldestCat = this.cats.peek();
-        const oldestDog = this.dogs.peek();
+  dequeueDog() {
+    return this.dogs.dequeue();
+  }
 
-        const animalType = oldestCat.isOlderThan(oldestDog) ? this.cats : this.dogs;
-        return animalType.dequeue();
-    }
-
-    dequeueDog() {
-        return this.dogs.dequeue();
-    }
-
-    dequeueCat() {
-        return this.cats.dequeue();
-    }
+  dequeueCat() {
+    return this.cats.dequeue();
+  }
 }
 
 /*

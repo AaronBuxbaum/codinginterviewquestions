@@ -1,23 +1,23 @@
-import { last } from 'lodash';
+import { last } from "lodash";
 
 export class Queue {
-    constructor() {
-        this.array = [];
-    }
+  constructor() {
+    this.array = [];
+  }
 
-    enqueue(value) {
-        this.array.unshift(value);
-    }
+  enqueue(value) {
+    this.array.unshift(value);
+  }
 
-    dequeue() {
-        return this.array.pop();
-    }
+  dequeue() {
+    return this.array.pop();
+  }
 
-    peek() {
-        return last(this.array);
-    }
+  peek() {
+    return last(this.array);
+  }
 
-    isEmpty() {
-        return this.array.length === 0;
-    }
+  isEmpty() {
+    return this.array.length === 0;
+  }
 }
