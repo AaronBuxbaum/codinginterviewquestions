@@ -33,4 +33,8 @@ export class StackMin {
 
 // This solution creates a data structure which is made from two stacks which update in parallel.
 // We don't need to store O(N) items; we only need O(K), where K is the number of unique numbers in the stack
-// We can do this because we know if we have multile
+// We can do this because we know if we have a smaller element at the same point in the normal stack, we don't
+// actually need to store it and just do a check on push and pop
+
+// Therefore, besides for the O(N) space for the stack itself, we add O(K) space for the minimum values stack.
+// As mentioned in the problem description, time complexity for each of the functions is O(1).
