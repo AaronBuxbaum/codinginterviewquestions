@@ -12,11 +12,10 @@ export class StackMin {
     }
 
     push(value) {
-        this.stack.push(value);
         if(this.minValues.isEmpty() || (value <= this.min())) {
             this.minValues.push(value);
         }
-        console.log(this.minValues);
+        this.stack.push(value);
     }
 
     min() {
@@ -24,7 +23,6 @@ export class StackMin {
     }
 
     pop() {
-        console.log(this.minValues);
         const returnValue = this.stack.pop();
         if(returnValue === this.min()) {
             this.minValues.pop();

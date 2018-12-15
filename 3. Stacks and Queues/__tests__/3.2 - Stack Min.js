@@ -6,9 +6,12 @@ test('Stack Min', () => {
     stack.push(20);
     stack.push(19);
 
+    console.log(stack);
     expect(stack.min()).toEqual(19);
     stack.pop();
+    console.log(stack);
     expect(stack.min()).toEqual(19);
     stack.pop();
+    console.log(stack);
     expect(stack.min()).toEqual(20);
 });
