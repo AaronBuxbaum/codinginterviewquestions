@@ -8,25 +8,26 @@
 // This just gets a little more complicated because we have to make sure that we don't double-swap
 // ie. if we iterate through the entire matrix, we'll flip the matrix 180 degrees instead of 90
 
+export const rotateMatrix = matrix => {
+  for (let x = 0; x < matrix.length / 2; x++) {
+    for (let y = x; y < matrix.length - x - 1; y++) {
+      const temp = matrix[x][y];
 
-export const rotateMatrix = (matrix) => {
-    for(let x = 0; x < matrix.length / 2; x++) {
-        for (let y = x; y < matrix.length - x - 1; y++) {
-            const temp = matrix[x][y];
+      // right -> top
+      matrix[x][y] = matrix[y][matrix.length - 1 - x];
 
-            // right -> top
-            matrix[x][y] = matrix[y][matrix.length - 1 - x];
+      // bottom -> right
+      matrix[y][matrix.length - 1 - x] =
+        matrix[matrix.length - 1 - x][matrix.length - 1 - y];
 
-            // bottom -> right
-            matrix[y][matrix.length - 1 - x] = matrix[matrix.length - 1 - x][matrix.length - 1 - y];
+      // left -> bottom
+      matrix[matrix.length - 1 - x][matrix.length - 1 - y] =
+        matrix[matrix.length - 1 - y][x];
 
-            // left -> bottom
-            matrix[matrix.length - 1 - x][matrix.length - 1 - y] = matrix[matrix.length - 1 - y][x];
-
-            // temp -> left
-            matrix[matrix.length - 1 - y][x] = temp;
-        }
+      // temp -> left
+      matrix[matrix.length - 1 - y][x] = temp;
     }
+  }
 };
 
 /*

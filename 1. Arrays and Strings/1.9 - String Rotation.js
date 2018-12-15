@@ -4,20 +4,19 @@
     (e.g., "waterbottle" is a rotation of "erbottlewat").
  */
 
-const isSubstring = (string1, string2) =>
-    string1.indexOf(string2) >= 0;
+const isSubstring = (string1, string2) => string1.indexOf(string2) >= 0;
 
 export const isRotation = (string1, string2) => {
-    if(string1.length !== string2.length) {
-        return false;
-    }
+  if (string1.length !== string2.length) {
+    return false;
+  }
 
-    if(string1.length === 0 || string1 === string2) {
-        return true;
-    }
+  if (string1.length === 0 || string1 === string2) {
+    return true;
+  }
 
-    const checkString = string1 + string1;
-    return isSubstring(checkString, string2);
+  const checkString = string1 + string1;
+  return isSubstring(checkString, string2);
 };
 
 /*

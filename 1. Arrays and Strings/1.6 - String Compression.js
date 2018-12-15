@@ -5,34 +5,34 @@
     You can assume the string has only uppercase and lowercase letters (a - z).
  */
 
-export const stringCompression = (input) => {
-    const dumpValue = () => {
-        if (count) {
-            result += `${prev}${count}`;
-        }
-        count = 1;
-    };
-
-    let prev = '';
-    let count = 0;
-    let result = '';
-
-    for(let i=0; i<input.length + 1; i++) {
-        const curr = input.charAt(i);
-        if (prev === curr) {
-            count++;
-        } else {
-            dumpValue();
-        }
-        prev = curr;
+export const stringCompression = input => {
+  const dumpValue = () => {
+    if (count) {
+      result += `${prev}${count}`;
     }
+    count = 1;
+  };
 
-    result = getShortest(result, input);
-    return result;
+  let prev = "";
+  let count = 0;
+  let result = "";
+
+  for (let i = 0; i < input.length + 1; i++) {
+    const curr = input.charAt(i);
+    if (prev === curr) {
+      count++;
+    } else {
+      dumpValue();
+    }
+    prev = curr;
+  }
+
+  result = getShortest(result, input);
+  return result;
 };
 
 const getShortest = (compressed, uncompressed) => {
-    return compressed.length < uncompressed.length ? compressed : uncompressed;
+  return compressed.length < uncompressed.length ? compressed : uncompressed;
 };
 
 /*

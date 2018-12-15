@@ -9,6 +9,4 @@
     Output: C
 */
 
-export const findBeginningOfLoop = (list) => {
-
-};
+export const findBeginningOfLoop = list => {};

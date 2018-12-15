@@ -12,53 +12,51 @@
 // pass through both the counter and the value, so we need a special data structure (ie. an object) for that.
 
 export const kthToLast = (list, k) => {
-    let head = list.head;
+  let head = list.head;
 
-    for (let i = 0; i < k - 1; i++) {
-        if (!head.next) {
-            return null;
-        }
-        head = head.next;
+  for (let i = 0; i < k - 1; i++) {
+    if (!head.next) {
+      return null;
     }
+    head = head.next;
+  }
 
-    let trail = list.head;
+  let trail = list.head;
 
-    while(head.next) {
-        head = head.next;
-        trail = trail.next;
-    }
+  while (head.next) {
+    head = head.next;
+    trail = trail.next;
+  }
 
-    return trail.value;
+  return trail.value;
 };
 
 // O(N) time (iterate through the entire list), and O(1) space
 
-
-
 // Recusive solution. I'm not super happy with this.
 export const kthToLastRecursive = (node, k) => {
-    let returnValue;
-    if(node.next) {
-        returnValue = kthToLastRecursive(node.next, k);
-    } else {
-        returnValue = {
-            value: null,
-            iteratedN: 0
-        };
-    }
-
-    const { value, iteratedN } = returnValue;
-    if (iteratedN === k - 1) {
-        return {
-            value: node.value,
-            iteratedN: iteratedN + 1,
-        };
-    }
-
-    return {
-        value: value,
-        iteratedN: iteratedN + 1,
+  let returnValue;
+  if (node.next) {
+    returnValue = kthToLastRecursive(node.next, k);
+  } else {
+    returnValue = {
+      value: null,
+      iteratedN: 0
     };
+  }
+
+  const { value, iteratedN } = returnValue;
+  if (iteratedN === k - 1) {
+    return {
+      value: node.value,
+      iteratedN: iteratedN + 1
+    };
+  }
+
+  return {
+    value: value,
+    iteratedN: iteratedN + 1
+  };
 };
 
 // O(N) time (iterate through the entire list), and O(N) space for recursive stack

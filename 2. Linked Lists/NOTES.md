@@ -1,4 +1,5 @@
 # Linked lists
+
 A _linked list_ is a data structure that represents a sequence of nodes. You can have either singly linked list (just pointers to the next node) or doubly linked list (pointers to the next and previous node).
 
 Linked lists have O(K) time to find the Kth element, but have the advantage of adding or removing items in constant time.
@@ -8,10 +9,11 @@ Implementation is typically done as a `Node` class which has a `Node` member var
 In an interview, always ask if it a singly or doubly linked list.
 
 To delete:
-  1. Given node `n`, find the previous node (`prev`)
-  2. Set `prev.next` to `n.next`
-  3. If the list is doubly linked, set `n.next.prev` to `n.prev`
-It's important to remember to check for the null pointer and to update the head or tail pointer as necessary.
+
+1. Given node `n`, find the previous node (`prev`)
+2. Set `prev.next` to `n.next`
+3. If the list is doubly linked, set `n.next.prev` to `n.prev`
+   It's important to remember to check for the null pointer and to update the head or tail pointer as necessary.
 
 "Runner Technique":
 This technique is used in many linked list problems. You iterate through the LL with two pointers at the same time, with one ahead of the other. It can be ahead by a fixed amount, or hopping multiple nodes for each slow node.

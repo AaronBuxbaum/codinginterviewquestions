@@ -15,28 +15,28 @@
 import { LinkedList } from "./LinkedList";
 
 export const partition = (list, partition) => {
-    let head = list.head;
-    let tail = head;
+  let head = list.head;
+  let tail = head;
 
-    let pointer = list.head;
-    while(pointer) {
-        let next = pointer.next;
+  let pointer = list.head;
+  while (pointer) {
+    let next = pointer.next;
 
-        if(pointer.value < partition) {
-            pointer.next = head;
-            head = pointer;
-        } else {
-            tail.next = pointer;
-            tail = pointer;
-        }
-
-        pointer = next;
+    if (pointer.value < partition) {
+      pointer.next = head;
+      head = pointer;
+    } else {
+      tail.next = pointer;
+      tail = pointer;
     }
 
-    delete tail.next;
-    const returnList = new LinkedList();
-    returnList.head = head;
-    return returnList;
+    pointer = next;
+  }
+
+  delete tail.next;
+  const returnList = new LinkedList();
+  returnList.head = head;
+  return returnList;
 };
 
 // Analysis: O(N) time to iterate through each of the elements

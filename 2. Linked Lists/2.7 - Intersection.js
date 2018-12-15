@@ -6,43 +6,43 @@
  */
 
 export const findIntersection = (list1, list2) => {
-    let pointer1 = list1.head;
-    let pointer2 = list2.head;
-    let counter1 = 0;
-    let counter2 = 0;
+  let pointer1 = list1.head;
+  let pointer2 = list2.head;
+  let counter1 = 0;
+  let counter2 = 0;
 
-    while(pointer1.next) {
-        counter1++;
-        pointer1 = pointer1.next;
-    }
-    while(pointer2.next) {
-        counter2++;
-        pointer2 = pointer2.next;
-    }
+  while (pointer1.next) {
+    counter1++;
+    pointer1 = pointer1.next;
+  }
+  while (pointer2.next) {
+    counter2++;
+    pointer2 = pointer2.next;
+  }
 
-    if (pointer1 !== pointer2) {
-        return null;
-    }
+  if (pointer1 !== pointer2) {
+    return null;
+  }
 
-    let head1 = list1.head;
-    while (counter1 > counter2) {
-        head1 = head1.next;
-        counter1--;
-    }
+  let head1 = list1.head;
+  while (counter1 > counter2) {
+    head1 = head1.next;
+    counter1--;
+  }
 
-    let head2 = list2.head;
-    while (counter2 > counter1) {
-        head2 = head2.next;
-        counter2--;
-    }
+  let head2 = list2.head;
+  while (counter2 > counter1) {
+    head2 = head2.next;
+    counter2--;
+  }
 
-    while (head1 && head2) {
-        if(head1 === head2) {
-            return head1;
-        }
-        head1 = head1.next;
-        head2 = head2.next;
+  while (head1 && head2) {
+    if (head1 === head2) {
+      return head1;
     }
+    head1 = head1.next;
+    head2 = head2.next;
+  }
 };
 
 /*
