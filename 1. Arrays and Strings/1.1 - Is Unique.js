@@ -19,7 +19,7 @@ export const isUnique = string => {
 // Analysis: O(N) time and O(N) space where N is the number of characters in the string
 
 /* What if you cannot use additional data structures? */
-export const isUniqueWithoutStructures = string => {
+const isUniqueWithoutStructuresSLOWER = string => {
   for (let i = 0; i < string.length; i++) {
     for (let j = 1; j < string.length; j++) {
       if (i === j) continue;
@@ -30,3 +30,15 @@ export const isUniqueWithoutStructures = string => {
 };
 
 // Analysis: O(N^2) time and O(1) space where N is the number of characters in the string
+
+export const isUniqueWithoutStructures = string => {
+  const sortedString = string.split("").sort();
+  for (let i = 1; i < sortedString.length; i++) {
+    if (sortedString[i] === sortedString[i - 1]) {
+      return false;
+    }
+  }
+  return true;
+};
+
+// Analysis: O(N log N) time and O(1) space where N is the number of characters in the string

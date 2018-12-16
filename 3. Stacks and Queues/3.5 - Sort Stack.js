@@ -19,6 +19,7 @@ export const sortStack = stack => {
     while (!tempStack.isEmpty() && tempStack.peek() > temp) {
       stack.push(tempStack.pop());
     }
+
     tempStack.push(temp);
   }
 

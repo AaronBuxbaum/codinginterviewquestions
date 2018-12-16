@@ -14,7 +14,11 @@ export class Stack {
   }
 
   peek() {
-    return this.isEmpty() ? 99999999999999 : last(this.stack);
+    return this.isEmpty() ? Number.MAX_SAFE_INTEGER : last(this.stack);
+  }
+
+  size() {
+    return this.stack.length;
   }
 
   isEmpty() {
