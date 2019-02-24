@@ -10,10 +10,10 @@
 // We can also do it recursively, like most linked list problems.
 // We will use the first implementation for this example.
 
-import { Node } from "./LinkedList";
+import { Node } from "../Data Structures/LinkedList";
 
 export const isPalindrome = list => {
-  let reversedHead;
+  let reversedHead = undefined;
   let pointer = list.head;
   while (pointer) {
     const node = new Node(pointer.value);

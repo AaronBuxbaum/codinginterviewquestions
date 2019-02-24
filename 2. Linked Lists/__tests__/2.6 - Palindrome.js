@@ -1,4 +1,4 @@
-import { buildList } from "../LinkedList";
+import { buildList } from "../../Data Structures/LinkedList";
 import { isPalindrome } from "../2.6 - Palindrome";
 
 test("Palindrome", () => {

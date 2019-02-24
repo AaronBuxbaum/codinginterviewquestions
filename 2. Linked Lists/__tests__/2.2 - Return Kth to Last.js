@@ -1,5 +1,5 @@
 import { kthToLast, kthToLastRecursive } from "../2.2 - Return Kth to Last";
-import { buildList } from "../LinkedList";
+import { buildList } from "../../Data Structures/LinkedList";
 
 test("Return Kth to Last", () => {
   let list = buildList([1, 2, 3, 4, 5]);

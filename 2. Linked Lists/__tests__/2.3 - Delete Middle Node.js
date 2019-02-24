@@ -1,4 +1,4 @@
-import { buildList } from "../LinkedList";
+import { buildList } from "../../Data Structures/LinkedList";
 import { deleteMiddleNode } from "../2.3 - Delete Middle Node";
 
 test("Delete Middle Node", () => {

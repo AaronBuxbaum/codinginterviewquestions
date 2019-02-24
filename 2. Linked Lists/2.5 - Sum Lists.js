@@ -17,7 +17,7 @@
  */
 
 import { get } from "lodash";
-import { LinkedList, Node } from "./LinkedList";
+import { LinkedList, Node } from "../Data Structures/LinkedList";
 
 export const sumLists = (list1, list2) => {
   const resultList = new LinkedList();

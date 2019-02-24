@@ -1,4 +1,4 @@
-import { buildList } from "../LinkedList";
+import { buildList } from "../../Data Structures/LinkedList";
 import { removeDups, removeDupsNoBuffer } from "../2.1 - Remove Dups";
 
 test("Remove Dups", () => {

@@ -1,5 +1,5 @@
 import { partition } from "../2.4 - Partition";
-import { buildList } from "../LinkedList";
+import { buildList } from "../../Data Structures/LinkedList";
 
 test("Partition", () => {
   const originalList = buildList([3, 5, 8, 5, 10, 2, 1]);

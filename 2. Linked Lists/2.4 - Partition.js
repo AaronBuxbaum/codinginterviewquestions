@@ -12,7 +12,7 @@
 // I went for the latter approach -- we effectively create a new "list" at the front of the list and move elements into it
 // Via a "head" and "tail" (since we don't care about stability -- if we do care about stability, we need to use new lists)
 
-import { LinkedList } from "./LinkedList";
+import { LinkedList } from "../Data Structures/LinkedList";
 
 export const partition = (list, partition) => {
   let head = list.head;

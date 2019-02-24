@@ -8,7 +8,7 @@
     You may use the built-in LinkedList data structure.
  */
 
-import { Queue } from "./Queue";
+import { Queue } from "../Data Structures/Queue";
 
 class Animal {
   constructor({ timestamp, type }) {

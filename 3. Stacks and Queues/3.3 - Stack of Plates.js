@@ -18,7 +18,7 @@
  */
 
 import { last } from "lodash";
-import { Stack } from "./Stack";
+import { Stack } from "../Data Structures/Stack";
 
 export class SetOfStacks {
   constructor(limit = 3) {

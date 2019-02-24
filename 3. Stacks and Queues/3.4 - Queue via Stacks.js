@@ -2,7 +2,7 @@
     Implement a MyQueue class which implements a queue using two stacks.
  */
 
-import { Stack } from "./Stack";
+import { Stack } from "../Data Structures/Stack";
 
 export class MyQueue {
   constructor() {

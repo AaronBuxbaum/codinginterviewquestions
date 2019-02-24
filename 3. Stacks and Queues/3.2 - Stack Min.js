@@ -3,7 +3,7 @@
     Push, pop and min should all operate in 0(1) time.
  */
 
-import { Stack } from "./Stack";
+import { Stack } from "../Data Structures/Stack";
 
 export class StackMin {
   constructor() {

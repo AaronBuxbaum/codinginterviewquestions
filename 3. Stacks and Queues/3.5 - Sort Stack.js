@@ -8,7 +8,7 @@
 // a third stack to hold the elements of the stack while we iterate through it.
 // Instead
 
-import { Stack } from "./Stack";
+import { Stack } from "../Data Structures/Stack";
 
 export const sortStack = stack => {
   const tempStack = new Stack();

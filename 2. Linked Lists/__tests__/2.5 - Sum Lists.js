@@ -1,5 +1,5 @@
-import { buildList } from "../LinkedList";
-import { sumLists, sumListsForwardOrder } from "../2.5 - Sum Lists";
+import { buildList } from "../../Data Structures/LinkedList";
+import { sumLists } from "../2.5 - Sum Lists";
 
 test("Sum Lists", () => {
   let list1 = buildList([7, 1, 6]);
@@ -12,3 +12,5 @@ test("Sum Lists", () => {
   resultList = buildList([0, 0, 0, 1]);
   expect(sumLists(list1, list2)).toEqual(resultList);
 });
+
+xtest("Sum Lists - Forward Order", () => {});

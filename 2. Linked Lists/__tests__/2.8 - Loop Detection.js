@@ -1,4 +1,4 @@
-import { buildList } from "../LinkedList";
+import { buildList } from "../../Data Structures/LinkedList";
 import {
   findBeginningOfLoop,
   findBeginningOfLoopWithSet
