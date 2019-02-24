@@ -11,3 +11,61 @@
     dependencies: (a, d), (f, b), (b, d), (f, a), (d, c)
   Output: f, e, a, b, d, c
  */
+
+import { partition } from "lodash";
+
+class Project {
+  dependencies = [];
+  dependentOn = 0;
+
+  constructor(value) {
+    this.value = value;
+  }
+
+  addDependency(value) {
+    this.dependencies.push(value);
+  }
+
+  getDependencies() {
+    return this.dependencies;
+  }
+}
+
+export const findBuildOrder = (projects, dependencies) => {
+  const graph = {};
+  let returnValue = [];
+
+  projects.forEach(project => {
+    graph[project] = new Project(project);
+  });
+
+  dependencies.forEach(([from, to]) => {
+    graph[from].addDependency(graph[to]);
+    graph[to].dependentOn++;
+  });
+
+  while (true) {
+    const [dependentProjects, rootProjects] = partition(
+      projects,
+      vertex => graph[vertex].dependentOn
+    );
+    projects = dependentProjects;
+
+    if (!rootProjects.length) {
+      break;
+    }
+
+    rootProjects.forEach(project => {
+      returnValue.push(project);
+      graph[project].getDependencies().forEach(dependency => {
+        dependency.dependentOn--;
+      });
+    });
+  }
+
+  if (projects.length) {
+    throw new Error("Cycle detected!");
+  }
+
+  return returnValue;
+};
