@@ -1,3 +1,1 @@
-xtest("Paths with Sum", () => {
-  expect(1 + 1).toEqual(2);
-});
+test.todo("Paths with Sum");
