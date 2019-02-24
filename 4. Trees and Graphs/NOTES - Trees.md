@@ -51,13 +51,13 @@ A _heap_ is a complete binary tree with some property attached. For example, a m
 There are two main operations on a heap: _insert_ and _extract_.
 
 Insert: insert the element at the bottom, in the rightmost spot to maintain the complete tree property. Then, we "fix" the tree by swapping the new element with its parent until an appropriate spot is found. In other words, "bubble up" the element according to the heap's property.
-  * This takes O(log n) time, where n is the number of nodes in the heap
+  * This takes `O(log n)` time, where `n` is the number of nodes in the heap
 Extract: Finding the element with the maximum of the property (ie. in a min-heap, the smallest element) is easy -- it's the element at the top of the heap. To remove it, we remove the root, then bubble down this element with its children until the heap's property is restored.
-  * This also takes O(log n) time, where n is the number of nodes in the heap
+  * This also takes `O(log n)` time, where `n` is the number of nodes in the heap
   
 ## Tries
 A _trie_ is variant of an n-ary tree where characters are stored at each node, and the path down the tree represents a word. Typically, a null node (ie. `*`) is used to denote the end of a complete word, or you can add a boolean flag to the node to denote that it represents a word, or you can use a special type of child (ie. `TerminatingNode` which extends `Node`).
 
-A trie is often used to store the entire English language for quick prefix lookup -- you can't effectively do hash table lookup for prefixes. Time to find a valid prefix is actually the same in a hash table -- both technically take O(K) time, where K is the length of the input string.
+A trie is often used to store the entire English language for quick prefix lookup -- you can't effectively do hash table lookup for prefixes. Time to find a valid prefix is actually the same in a hash table -- both technically take `O(K)` time, where `K` is the length of the input string.
 
 A trie is often used as an optimization with lists of valid words. For example, if you're looking through a tree for related prefixes repeatedly (ie. M -> MA -> MAN -> MANY), you could instead pass a reference to the current node and then check if Y is a child of MAN, as opposed to starting from the root each time.
