@@ -24,3 +24,7 @@ export const buildMinimalHeightBST = (arr, start = 0, end = arr.length - 1) => {
   ];
   return root;
 };
+
+// Time complexity is O(N) -- we have to look at each node once
+// Space complexity is O(N), to build the tree itself.
+// We could also include the space complexity of the recursive stacks, theoretically
