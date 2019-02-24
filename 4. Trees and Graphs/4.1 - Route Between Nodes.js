@@ -6,10 +6,19 @@
 // for example, DFS is the cleanest and technically fastest, but breadth-first is more likely to find
 // it if there's any ordering at all to the tree, and can be used to find shortest path.
 
-export const hasRoute = (node1, node2) => {
-  if (node1 === node2) {
+// We can't use bidirectional search because the graph is directed.
+// We also have to be careful to tag seen nodes to avoid infinite loops.
+
+export const hasRoute = (startNode, endNode) => {
+  if (startNode.visited) {
+    return false;
+  }
+
+  if (startNode === endNode) {
     return true;
   }
 
-  node1.visited = true;
+  startNode.visited = true;
+
+  return startNode.children.some(node => hasRoute(node, endNode));
 };

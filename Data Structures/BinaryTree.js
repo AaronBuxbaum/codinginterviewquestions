@@ -1,4 +1,4 @@
-class BinaryNode {
+export class BinaryNode {
   right;
   left;
 
@@ -38,5 +38,12 @@ export const buildBinaryTree = (data, start = 0) => {
   const rightIndex = leftIndex + 1;
   root.left = buildBinaryTree(data, leftIndex);
   root.right = buildBinaryTree(data, rightIndex);
+  root.children = [];
+  if (root.left) {
+    root.children.push(root.left);
+  }
+  if (root.right) {
+    root.children.push(root.right);
+  }
   return root;
 };

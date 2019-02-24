@@ -42,7 +42,7 @@ export const postOrderTraversal = (tree, returnValue = []) => {
 
 export const breadthFirstTraversal = tree => {
   const returnValue = [];
-  const queue = []; // faster as a linked list
+  let queue = []; // faster as a linked list
   tree.hasBeenSeen = true;
   queue.push(tree);
 
@@ -50,15 +50,14 @@ export const breadthFirstTraversal = tree => {
     const node = queue.shift();
     returnValue.push(node.value);
 
-    if (node.left && !node.left.hasBeenSeen) {
-      node.left.hasBeenSeen = true;
-      queue.push(node.left);
-    }
+    const currentLevelNodes = node.children
+      .filter(child => !child.hasBeenSeen)
+      .map(child => ({
+        ...child,
+        hasBeenSeen: true
+      }));
 
-    if (node.right && !node.right.hasBeenSeen) {
-      node.right.hasBeenSeen = true;
-      queue.push(node.right);
-    }
+    queue = queue.concat(currentLevelNodes);
   }
 
   return returnValue;
