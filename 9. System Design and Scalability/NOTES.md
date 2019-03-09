@@ -70,7 +70,11 @@ Note that the goal here is not to literally recreate the system, it's to demonst
 ## Key Concepts
 
 * SQL vs NoSQL
-  - TODO
+  - SQL operates on explicit relational table definitions
+  - SQL is better for well-defined projects and places where you want that rigidity
+  - NoSQL is effectively just an object that can be queried
+  - NoSQL is more flexible to changing requirements
+  - NoSQL is better for scaling and distributing across more (because it doesn't need to move around all of the data, it just moves according to a single key)
 * Horizontal vs Vertical Scaling
   - Vertical: increasing the resources of a specific node
   - Horizontal: increasing the number of nodes
