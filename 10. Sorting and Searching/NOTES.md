@@ -72,3 +72,13 @@ Pick a random element (the middle is usually fine) and _partition_ the array suc
   - Runtime: O(kn) -- k is the maximum number of bits in an element in the array
   - Memory: O(1)
 If you have integers (and some other data types with finite number of bits), you can iterate through each _digit_, grouping by that digit. For example, with an array of integers, you might sort by the first digit, then next, then next, ending up with a sorted array in the end.
+
+
+
+# Searching
+
+For searching, we typically think of binary search.
+
+In binary search, we look for an element by comparing the desired value to the midpoint of a sorted array, if X is greater than we search the right side, repeating until we find the value or the subarray has size 0.
+
+There are other ways to search -- you could leverage a binary tree or by using a hash table.
