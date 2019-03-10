@@ -1,9 +1,11 @@
 export class BinaryNode {
   right;
   left;
+  parent;
 
-  constructor(value) {
+  constructor(value, parent) {
     this.value = value;
+    this.parent = parent;
   }
 
   isComplete() {
@@ -11,7 +13,7 @@ export class BinaryNode {
   }
 
   addChild(value) {
-    const node = new BinaryNode(value);
+    const node = new BinaryNode(value, this);
 
     if (!this.left) {
       this.left = node;
