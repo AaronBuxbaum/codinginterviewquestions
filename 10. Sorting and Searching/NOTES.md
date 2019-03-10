@@ -1,5 +1,4 @@
 # Sorting
-
 Sorting is useful for interview problems. Merge Sort, Quick Sort and Bucket Sort are the most common.
 
 
@@ -76,7 +75,6 @@ If you have integers (and some other data types with finite number of bits), you
 
 
 # Searching
-
 For searching, we typically think of binary search.
 
 In binary search, we look for an element by comparing the desired value to the midpoint of a sorted array, if X is greater than we search the right side, repeating until we find the value or the subarray has size 0.
