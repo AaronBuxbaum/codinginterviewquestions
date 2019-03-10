@@ -61,3 +61,30 @@ A _trie_ is variant of an n-ary tree where characters are stored at each node, a
 A trie is often used to store the entire English language for quick prefix lookup -- you can't effectively do hash table lookup for prefixes. Time to find a valid prefix is actually the same in a hash table -- both technically take `O(K)` time, where `K` is the length of the input string.
 
 A trie is often used as an optimization with lists of valid words. For example, if you're looking through a tree for related prefixes repeatedly (ie. M -> MA -> MAN -> MANY), you could instead pass a reference to the current node and then check if Y is a child of MAN, as opposed to starting from the root each time.
+
+## AVL Trees
+An _AVL tree_ is a common way to implement tree balancing. An AVL tree is a binary search tree that stores the height of the subtrees rooted at the node; for any node, we can check if it is height balanced if the left subtree and right subtree's heights are within abs(1) of each other.
+
+When you insert a node, the balance of some nodes might change to no longer be balanced. When we "unwind" the recursive stack, we can check and fix the balance of each node. If the balance is 2 (ie. the left is bigger than the right), we want to convert to a left-left shape
+
+(left right)
+         6
+     2       7
+  1     4
+      3   5
+     
+(left left)
+         6
+     4       7
+  2     5
+1   3
+
+then, rotate the tree so that it is balanced
+
+(balanced)
+    4
+ 2     6
+1 3   5 7
+
+this is all in reverse for the right side case.
+We recurse up the tree, fixing any imbalances.
