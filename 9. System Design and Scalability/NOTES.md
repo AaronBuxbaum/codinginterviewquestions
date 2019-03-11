@@ -91,6 +91,9 @@ Note that the goal here is not to literally recreate the system, it's to demonst
   - Vertical Partitioning: partition by feature (ie. one partition for profiles, one for messages, etc). A drawback is that if a table gets very large, you might need to repartition that database, possibly with a different scheme.
   - Key-Based (or Hash-Based) Partitioning: use a part of the idea (ie. an ID) to partition it. For example, you can partition between N servers and put the data on server `mod(key, n)`. One downside is that the number of servers you have is effectively fixed -- adding new servers means reallocating all the data, which is very expensive.
   - Directory-Based Partitioning: maintain a lookup table for where the data can be found. This makes it easy to add servers, but causes a single point of failure, and it negatively impacts performance.
+* Replication
+  - Share the _same_ data across multiple machines and allows for automatic failover to a backup node
+  - Can also help with horizontal scaling of reads if you are okay with slightly outdated information
 * Caching
   - A cache is typically a very fast simple key-value pairing that sits between the application layer and your data store.
   - When an application requests information, it first tries the cache; if it isn't there, it looks it up in the data store.

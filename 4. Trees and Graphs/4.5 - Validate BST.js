@@ -7,6 +7,8 @@
 // Instead, we can just check the previously seen node against the new node
 // Even better, we can just traverse through the tree and check each node against the constraints of the previous node
 
+// alternatively, we could use a sliding window of requirements (ie. if you recurse to the left, you know that every node under it should be less than its own value; vice versa for the right child)
+
 export const validateBST = (tree, min, max) => {
   if (!tree) {
     return true;
